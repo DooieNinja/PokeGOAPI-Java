@@ -65,10 +65,8 @@ public class RequestHandler implements Runnable {
 	 *
 	 * @param api    the api
 	 * @param client the client
-	 * @throws LoginFailedException  When login fails
-	 * @throws RemoteServerException If request errors occur
 	 */
-	public RequestHandler(PokemonGo api, OkHttpClient client) throws LoginFailedException, RemoteServerException {
+	public RequestHandler(PokemonGo api, OkHttpClient client) {
 		this.api = api;
 		this.client = client;
 		apiEndpoint = ApiSettings.API_ENDPOINT;
@@ -263,7 +261,7 @@ public class RequestHandler implements Runnable {
 			Log.d(TAG, "Authenticated with static token");
 			builder.setAuthInfo(api.getAuthInfo());
 		}
-		builder.setUnknown12(989);
+		builder.setMsSinceLastLocationfix(989);
 		builder.setLatitude(api.getLatitude());
 		builder.setLongitude(api.getLongitude());
 		builder.setAltitude(api.getAltitude());
